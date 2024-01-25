@@ -6,11 +6,11 @@ class Program
     {
         int a = 7;
         int b = a - 6;
-        int[]v = new int [6];
+        int[]v = new int [7];
 
        while(b<a){
-        v[b] = a + b;
-        Console.WriteLine(v[b]);
+        v[b] = b + a;
+        Console.WriteLine($"v[{b}] = {v[b]}");
         b = b + 2;
        }
       
