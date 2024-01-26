@@ -1,44 +1,38 @@
 using System;
 
-internal class Program
+class Program
 {
-    private static void Main(string[] args)
+    static void Main(string[] args)
     {
-        double valorPresente = 2000.00;
-        double taxaJurosMes = 0.02;
-        double retirada = 0;
-        double percentualJuros;
+        double valorAtual = 2000.00;
 
-        Console.WriteLine("Digite o mês do resgate:");
-        double mes = double.Parse(Console.ReadLine());
-        Console.WriteLine("Digite o total de meses:");
-        double periodo = double.Parse(Console.ReadLine());
+        Console.WriteLine("Informe a taxa de juros (em %):");
+        double taxaJuros = double.Parse(Console.ReadLine()) / 100;
 
-        Console.WriteLine("| valor presente  | taxa de juros | periodo de a.m. | rendimento    | renda acumulada | resgate   | total      |");
-        Console.WriteLine("|------------------------------------------------------------------------------------------------------------------|");
+        Console.WriteLine("Informe o período em meses:");
+        int periodoTotal = int.Parse(Console.ReadLine());
 
-        for (int x = 1; x <= periodo; x++)
+        Console.WriteLine("Informe o mês do resgate:");
+        int mesResgate = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Informe o valor do saque (se houver):");
+        double valorSaque = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("| PERÍODO |  VALOR ATUAL  | RENDIMENTO LIQ. | REND. ACUMULADO |  SAQUE   | VALOR FINAL |");
+        Console.WriteLine("|---------|---------------|-----------------|-----------------|----------|-------------|");
+
+        for (int periodo = 0; periodo <= periodoTotal; periodo++)
         {
-            if (x < mes)
-            {
-                percentualJuros = valorPresente * Math.Pow(1 + taxaJurosMes, x);
-                Console.WriteLine($"| {valorPresente.ToString("C"),-16:C2} | {taxaJurosMes * 100,-13}% | {x,-15} | {(percentualJuros - valorPresente).ToString("C"),-13} | {percentualJuros.ToString("C"),-15} | {retirada.ToString("C"),-9} | {percentualJuros.ToString("C"),-9} |");
-            }
-            else if (x == mes)
-            {
-                Console.WriteLine("Digite o valor de retirada:");
-                double valorRetirada = double.Parse(Console.ReadLine());
-                retirada = valorRetirada;
-                double rendimentoAntesDoResgate = valorPresente * Math.Pow(1 + taxaJurosMes, x - 1);
-                percentualJuros = rendimentoAntesDoResgate * (1 + taxaJurosMes);
-                valorPresente = percentualJuros - retirada;
-                Console.WriteLine($"| {rendimentoAntesDoResgate.ToString("C"),-16:C2} | {taxaJurosMes * 100,-13}% | {x,-15} | {(percentualJuros - rendimentoAntesDoResgate).ToString("C"),-13} | {percentualJuros.ToString("C"),-15} | {retirada.ToString("C"),-9} | {valorPresente.ToString("C"),-9} |");
-            }
-            else if (x > mes)
-            {
-                percentualJuros = valorPresente * Math.Pow(1 + taxaJurosMes, x - mes);
-                Console.WriteLine($"| {valorPresente.ToString("C"),-16:C2} | {taxaJurosMes * 100,-13}% | {x,-15} | {(percentualJuros - valorPresente).ToString("C"),-13} | {percentualJuros.ToString("C"),-15} | {retirada.ToString("C"),-9} | {percentualJuros.ToString("C"),-9} |");
-            }
+            double rendimento = valorAtual * taxaJuros;
+            double rendimentoLiquido = rendimento - (periodo == mesResgate ? valorSaque : 0);
+            double rendimentoAcumulado = valorAtual + rendimento;
+            valorAtual = rendimentoAcumulado - (periodo == mesResgate ? valorSaque : 0);
+
+            Console.WriteLine($"| {periodo,-7} | {valorAtual,13:C2} | {rendimentoLiquido,15:C2} | {rendimentoAcumulado,15:C2} | {(periodo == mesResgate ? valorSaque : 0),8:C2} | {valorAtual,11:C2} |");
+
+            if (valorAtual <= 0)
+                break;
         }
     }
 }
+
