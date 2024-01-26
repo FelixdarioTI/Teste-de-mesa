@@ -4,7 +4,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        double valorAtual = 2000.00;
+        System.Console.WriteLine("Informe o valor atual:");
+        double valorAtual = double.Parse(Console.ReadLine());
 
         System.Console.WriteLine("Informe a taxa de juros (em %):");
         double taxaJuros = double.Parse(Console.ReadLine()) / 100;

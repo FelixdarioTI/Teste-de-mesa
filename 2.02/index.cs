@@ -13,19 +13,19 @@ class Program{
         
         double f = percentualJuros - valorPresente;
 
-        Console.WriteLine($"Valor de início do investimento R$:{valorPresente:C2}");
-        Console.WriteLine($"Taxa de Juros adicionada ao valor :{taxaJuros*100}%");
-        Console.WriteLine($"Período mensal :{periodoMes}");
-        Console.WriteLine($"Rendimento  R$:{f:C2}");
-        Console.WriteLine($"Valor final de juros R$:{percentualJuros:C2}");
+        System.Console.WriteLine($"Valor de início do investimento R$:{valorPresente:C2}");
+        System.Console.WriteLine($"Taxa de Juros adicionada ao valor :{taxaJuros*100}%");
+        System.Console.WriteLine($"Período mensal :{periodoMes}");
+        System.Console.WriteLine($"Rendimento  R$:{f:C2}");
+        System.Console.WriteLine($"Valor final de juros R$:{percentualJuros:C2}");
         
         double valorc = valorPresente;
-        Console.WriteLine("\nRendimento mensal:");
+        System.Console.WriteLine("\nRendimento mensal:");
         for (int x = 1; x <= periodoMes; x++) {
             double renda = valorc * taxaJuros;
             valorc += renda;
-            Console.WriteLine($"\nMês {x}: Rendimento mensal R$ {renda:C2}");
-            Console.WriteLine($"Valor Final Mensal: R${valorc:C2}");
+            System.Console.WriteLine($"\nMês {x}: Rendimento mensal R$ {renda:C2}");
+            System.Console.WriteLine($"Valor Final Mensal: R${valorc:C2}");
         }
     }
 }

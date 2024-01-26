@@ -14,7 +14,7 @@ class Program
 
          for (int i = 0; i < 7; i++)
         {
-            Console.WriteLine($"Lugar: {i} a resposta é: {v[i]}");
+            System.Console.WriteLine($"Lugar: {i} a resposta é: {v[i]}");
         }
     }
 }

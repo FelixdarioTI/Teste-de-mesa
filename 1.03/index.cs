@@ -10,7 +10,7 @@ class Program
 
        while(b<a){
         v[b] = b + a;
-        Console.WriteLine($"v[{b}] = {v[b]}");
+        System.Console.WriteLine($"v[{b}] = {v[b]}");
         b = b + 2;
        }
       

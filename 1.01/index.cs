@@ -13,10 +13,10 @@ class Program
         
         for (int i = 0; i < 4; i++)
         {
-            Console.WriteLine($"v[{i}]:{v[i]}");
-            Console.Write($"A:{a}");
-            Console.Write($"  B:{b}");
-            Console.WriteLine($"  C:{c}");
+            System.Console.WriteLine($"v[{i}]:{v[i]}");
+            System.onsole.Write($"A:{a}");
+            System.Console.Write($"  B:{b}");
+            System.Console.WriteLine($"  C:{c}");
         }
 
         Console.ReadLine();
