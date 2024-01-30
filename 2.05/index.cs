@@ -3,9 +3,14 @@ using System;
 class Program {
     static void Main(string[] args) {
 
-        double valorPresente = 3800.00;
-        double TaxaJuros = 1.25 / 100;
-        double ValorFuturo = 7390.61;
+      System.Console.WriteLine("Passe o valor inicial: ");
+     double valorPresente = Convert.ToDouble(Console.ReadLine());
+
+        System.Console.WriteLine("Informe a taxa de juros (com vírgula se haver decimais):");
+        double TaxaJuros = Convert.ToDouble(Console.ReadLine())/100;
+
+        System.Console.WriteLine("Qual o valor Futuro: ");
+        double ValorFuturo = Convert.ToDouble(Console.ReadLine());
 
         double Valorrequerido = (ValorFuturo - valorPresente);
 
